@@ -1,0 +1,146 @@
+# Silicon Labs Project Configuration Tools: slcp, v0, Component selection file.
+project_name: zbminir2
+label: zbminir2
+description: Open source firmware for ZBMINIR2
+category: Zigbee Application
+filter:
+- name: Device Type
+  value: [SoC]
+- name: Project Difficulty
+  value: [Beginner]
+- name: Wireless Technology
+  value: [Zigbee]
+package: Zigbee
+quality: production
+#readme:
+#- {path: readme.html}
+#- {path: readme.html}
+source:
+- {path: main.c}
+- {path: app.c}
+tag: [prebuilt_demo]
+sdk: {id: simplicity_sdk, version: 2024.6.2}
+toolchain_settings: []
+component:
+- {id: EFR32MG21A020F768IM32}
+- instance: [example]
+  id: cli
+- {id: clock_manager}
+- {id: iostream_recommended_stream}
+- instance: [inst]
+  id: iostream_usart
+- instance: [btn_button, btn_switch]
+  id: simple_button
+- instance: [led0, relay]
+  id: simple_led
+- {id: zigbee_application_bootloader}
+- {id: zigbee_basic}
+#- {id: zigbee_color_control_server}
+- {id: zigbee_core_cli}
+- {id: zigbee_counters}
+- {id: zigbee_debug_print}
+- {id: zigbee_find_and_bind_target}
+- {id: zigbee_groups_server}
+- {id: zigbee_identify}
+- {id: zigbee_interpan}
+#- {id: zigbee_level_control}
+#- {id: zigbee_level_control_server}
+#- {id: zigbee_zll_level_control_server}
+- {id: zigbee_network_creator}
+- {id: zigbee_network_creator_security}
+- {id: zigbee_network_steering}
+- {id: zigbee_on_off}
+- {id: zigbee_ota_bootload}
+- {id: zigbee_ota_client}
+- {id: zigbee_ota_client_policy}
+- {id: zigbee_ota_storage_simple}
+- {id: zigbee_pro_stack}
+- {id: zigbee_reporting}
+- {id: zigbee_scan_dispatch}
+- {id: zigbee_scenes}
+- {id: zigbee_source_route}
+- {id: zigbee_stack_diagnostics}
+- {id: zigbee_update_tc_link_key}
+- {id: zigbee_zcl_cli}
+- {id: zigbee_zcl_framework_core}
+- {id: zigbee_zll}
+- {id: zigbee_zll_commissioning_common}
+- {id: zigbee_zll_commissioning_server}
+- {id: zigbee_zll_identify_server}
+- {id: zigbee_zll_on_off_server}
+- {id: zigbee_zll_scenes_server}
+- {id: zigbee_zll_utility_server}
+config_file:
+- {path: zcl_config.zap, directory: zcl}
+
+- override:
+    component: iostream_usart
+    file_id: iostream_usart_config
+    instance: inst
+  path: include/sl_iostream_usart_inst_config.h
+- override:
+    component: simple_led
+    file_id: simple_led_config
+    instance: relay
+  path: include/sl_simple_led_relay_config.h
+- override:
+    component: simple_led
+    file_id: simple_led_config
+    instance: led0
+  path: include/sl_simple_led_led0_config.h
+- override:
+    component: simple_button
+    file_id: simple_button_config
+    instance: btn_button
+  path: include/sl_simple_button_btn_button_config.h
+- override:
+    component: simple_button
+    file_id: simple_button_config
+    instance: btn_switch
+  path: include/sl_simple_button_btn_switch_config.h
+
+configuration:
+- {name: SL_BOARD_ENABLE_VCOM, value: '1'}
+- condition: [iostream_usart]
+  name: SL_IOSTREAM_USART_VCOM_FLOW_CONTROL_TYPE
+  value: usartHwFlowControlCtsAndRts
+- condition: [iostream_eusart]
+  name: SL_IOSTREAM_EUSART_VCOM_FLOW_CONTROL_TYPE
+  value: SL_IOSTREAM_EUSART_UART_FLOW_CTRL_CTS_RTS
+- {name: SL_CLI_MAX_INPUT_ARGUMENTS, value: '16'}
+- {name: SLI_ZIGBEE_PRIMARY_NETWORK_DEVICE_TYPE, value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_ROUTER}
+- {name: SLI_ZIGBEE_PRIMARY_NETWORK_SECURITY_TYPE, value: SLI_ZIGBEE_NETWORK_SECURITY_TYPE_3_0}
+- {name: SL_CLI_PROMPT_STRING, value: '"ZBMINIR2>"'}
+- condition: [device_series_2]
+  name: NVM3_DEFAULT_NVM_SIZE
+  value: '32768'
+- {name: SL_PSA_ITS_SUPPORT_V1_DRIVER, value: '0'}
+- {name: SL_PSA_ITS_SUPPORT_V2_DRIVER, value: '0'}
+- {name: SL_PSA_ITS_SUPPORT_V3_DRIVER, value: '1'}
+- condition: [freertos]
+  name: SL_STACK_SIZE
+  value: '1024'
+- condition: [micriumos_kernel]
+  name: SL_STACK_SIZE
+  value: '512'
+- {name: configTIMER_TASK_PRIORITY, value: '53'}
+- {name: configMAX_TASK_NAME_LEN, value: '30'}
+
+- name: SL_ZIGBEE_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_STORAGE_START
+  value: '458752'
+- name: SL_ZIGBEE_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_STORAGE_END
+  value: '753664'
+
+- name: SL_ZIGBEE_BINDING_TABLE_SIZE
+  value: 10
+
+- name: SL_ZIGBEE_AF_PLUGIN_OTA_CLIENT_POLICY_FIRMWARE_VERSION
+  value: 1
+
+- name: SL_ZIGBEE_AF_PLUGIN_OTA_CLIENT_AUTO_START
+  value: 0
+
+ui_hints:
+  highlight:
+  - {path: readme.html}
+
