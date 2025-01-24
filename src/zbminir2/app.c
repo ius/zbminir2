@@ -45,6 +45,7 @@
 #define LIGHT_ENDPOINT           1
 #define RESET_TIMEOUT_MS         1000
 #define RESET_NUM_TOGGLES        5
+#define SWITCH_DEBOUNCE_MS       35
 
 static sl_zigbee_af_event_t commissioning_event;
 static sl_zigbee_af_event_t switch_event;
@@ -86,6 +87,15 @@ static void switch_event_handler(sl_zigbee_af_event_t *event)
 {
   sl_status_t status;
   sl_button_state_t state;
+  uint64_t dt;
+
+  sl_sleeptimer_tick64_to_ms(sl_sleeptimer_get_tick_count64() - last_toggle, &dt);
+
+  // avoids spurious switch events
+  if(dt <= SWITCH_DEBOUNCE_MS) {
+    sl_zigbee_app_debug_println("%s: skipped spurious event: %d", __func__, dt);
+    return;
+  }
   
   state = sl_button_get_state(&sl_button_btn_switch);
 
