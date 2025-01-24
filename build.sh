@@ -62,7 +62,9 @@ flash()
 	bin="$1"
 	offset="$2"
 
-	openocd -f openocd/openocd_jlink.cfg \
+	openocd -f interface/jlink.cfg \
+		-c 'transport select swd' \
+		-f openocd/efm32s2.cfg \
 		-c "program ${bin} ${offset}; reset; exit"
 }
 
