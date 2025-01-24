@@ -23,6 +23,7 @@ gen_build_config()
 
 	[ -d "build/${prj}" ] && return 0
 
+	CLUSTER_XML=$PWD/src/zbminir2/mfg-specific-cluster.xml \
 	slc-cli generate \
 		--sdk "$SDK" \
 		--export-destination build/$prj \

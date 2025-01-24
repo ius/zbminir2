@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+Copyright (c) 2008,2020 Silicon Labs.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<configurator>
+  <domain name="Ember"/>
+  <cluster manufacturerCode="0x1286">
+    <name>eWeLink Mfg Specific Cluster</name>
+    <domain>Ember</domain>
+    <description>Manufacturer specific cluster for eWeLink/SONOFF</description>
+    <code>0xfc11</code>
+    <define>EWELINK_MFG_SPECIFIC_CLUSTER</define>
+    <client init="false" tick="false">false</client>
+    <server init="false" tick="false">true</server>
+    <attribute side="server" code="0x0012" define="RADIO_POWER" type="INT16S" min="-32768" max="32767" writable="true" default="0x09" optional="true">Radio Power</attribute>
+    <attribute side="server" code="0x0014" define="DELAYED_POWER_ON_STATE" type="BOOLEAN" min="0x00" max="0x01" writable="true" default="0x00" optional="true">Delayed Power On State</attribute>
+    <attribute side="server" code="0x0015" define="DELAYED_POWER_ON_TIME" type="INT16U" min="0x00" max="0xFFFF" writable="true" default="0x00" optional="true">Delayed Power On Time</attribute>
+    <attribute side="server" code="0x0016" define="EXT_TRIGGER_MODE" type="INT8U" min="0x00" max="0xFF" writable="true" default="0x00" optional="true">External Trigger Mode</attribute>
+    <attribute side="server" code="0x0017" define="DETACH_RELAY_MODE" type="BOOLEAN" min="0x00" max="0x01" writable="true" default="0x00" optional="true">Detach Relay Mode</attribute>
+  </cluster>
+</configurator>

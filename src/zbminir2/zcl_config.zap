@@ -1,6 +1,6 @@
 {
   "fileFormat": 2,
-  "featureLevel": 104,
+  "featureLevel": 106,
   "creator": "zap",
   "keyValuePairs": [
     {
@@ -31,6 +31,11 @@
       "type": "gen-templates-json",
       "category": "zigbee",
       "version": "zigbee-v0"
+    },
+    {
+      "pathRelativity": "resolveEnvVars",
+      "path": "$CLUSTER_XML",
+      "type": "zcl-xml-standalone"
     }
   ],
   "endpointTypes": [
@@ -41,14 +46,16 @@
         "code": 2,
         "profileId": 260,
         "label": "HA-onnoffoutput",
-        "name": "HA-onnoffoutput"
+        "name": "HA-onnoffoutput",
+        "deviceTypeOrder": 0
       },
       "deviceTypes": [
         {
           "code": 2,
           "profileId": 260,
           "label": "HA-onnoffoutput",
-          "name": "HA-onnoffoutput"
+          "name": "HA-onnoffoutput",
+          "deviceTypeOrder": 0
         }
       ],
       "deviceVersions": [
@@ -1212,6 +1219,112 @@
               "code": 65533,
               "mfgCode": null,
               "side": "client",
+              "type": "int16u",
+              "included": 1,
+              "storageOption": "RAM",
+              "singleton": 0,
+              "bounded": 0,
+              "defaultValue": "0x0001",
+              "reportable": 0,
+              "minInterval": 1,
+              "maxInterval": 65534,
+              "reportableChange": 0
+            }
+          ]
+        },
+        {
+          "name": "eWeLink Mfg Specific Cluster",
+          "code": 64529,
+          "mfgCode": 4742,
+          "define": "EWELINK_MFG_SPECIFIC_CLUSTER",
+          "side": "server",
+          "enabled": 1,
+          "attributes": [
+            {
+              "name": "Radio Power",
+              "code": 18,
+              "mfgCode": 4742,
+              "side": "server",
+              "type": "int16s",
+              "included": 1,
+              "storageOption": "NVM",
+              "singleton": 0,
+              "bounded": 0,
+              "defaultValue": "0x09",
+              "reportable": 0,
+              "minInterval": 1,
+              "maxInterval": 65534,
+              "reportableChange": 0
+            },
+            {
+              "name": "Delayed Power On State",
+              "code": 20,
+              "mfgCode": 4742,
+              "side": "server",
+              "type": "boolean",
+              "included": 1,
+              "storageOption": "NVM",
+              "singleton": 0,
+              "bounded": 0,
+              "defaultValue": "0x00",
+              "reportable": 0,
+              "minInterval": 1,
+              "maxInterval": 65534,
+              "reportableChange": 0
+            },
+            {
+              "name": "Delayed Power On Time",
+              "code": 21,
+              "mfgCode": 4742,
+              "side": "server",
+              "type": "int16u",
+              "included": 1,
+              "storageOption": "NVM",
+              "singleton": 0,
+              "bounded": 0,
+              "defaultValue": "0x00",
+              "reportable": 0,
+              "minInterval": 1,
+              "maxInterval": 65534,
+              "reportableChange": 0
+            },
+            {
+              "name": "External Trigger Mode",
+              "code": 22,
+              "mfgCode": 4742,
+              "side": "server",
+              "type": "int8u",
+              "included": 1,
+              "storageOption": "NVM",
+              "singleton": 0,
+              "bounded": 0,
+              "defaultValue": "0x00",
+              "reportable": 0,
+              "minInterval": 1,
+              "maxInterval": 65534,
+              "reportableChange": 0
+            },
+            {
+              "name": "Detach Relay Mode",
+              "code": 23,
+              "mfgCode": 4742,
+              "side": "server",
+              "type": "boolean",
+              "included": 1,
+              "storageOption": "NVM",
+              "singleton": 0,
+              "bounded": 0,
+              "defaultValue": "0x00",
+              "reportable": 0,
+              "minInterval": 1,
+              "maxInterval": 65534,
+              "reportableChange": 0
+            },
+            {
+              "name": "cluster revision",
+              "code": 65533,
+              "mfgCode": null,
+              "side": "server",
               "type": "int16u",
               "included": 1,
               "storageOption": "RAM",
