@@ -127,6 +127,7 @@ static void commissioning_event_handler(sl_zigbee_af_event_t *event)
 {
   if(sl_button_get_state(&sl_button_btn_button) == SL_SIMPLE_BUTTON_RELEASED) {
     if(sl_zigbee_af_network_state() == SL_ZIGBEE_JOINED_NETWORK) {
+      sl_zigbee_clear_binding_table();
       sl_zigbee_app_debug_println("%s: leave network", __func__);
       sl_zigbee_leave_network(SL_ZIGBEE_LEAVE_NWK_WITH_NO_OPTION);
     } else {
