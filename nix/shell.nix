@@ -25,6 +25,7 @@ mkShell {
     picocom
     rlwrap
     openocd-efm32
+    python3Packages.universal-silabs-flasher
 
     slc
     simplicity-commander
