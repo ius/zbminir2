@@ -5,7 +5,7 @@ stdenv.mkDerivation {
   version = "1v17p0b1771";
 
   src = fetchzip {
-    url = "https://www.silabs.com/documents/login/software/SimplicityCommander-Linux.zip";
+    url = "https://r2.pargon.nl/SimplicityCommander-Linux_1v17p0b1771.zip";
     hash = "sha256-eFWHgrmkOgP77pn1vaOFVNqVkbHPHKBvE6yNDPTdhRM=";
   };
 

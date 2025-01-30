@@ -43,7 +43,7 @@ stdenv.mkDerivation {
   version = "5.10.0.0";
 
   src = fetchzip {
-    url = "https://www.silabs.com/documents/login/software/slc_cli_linux.zip";
+    url = "https://r2.pargon.nl/slc_cli_linux_5.10.0.0.zip";
     hash = "sha256-Lsv+v8V5CwqggavQanL6LCBLG7y4NPeBB5bf9rRH7Oc=";
   };
 
