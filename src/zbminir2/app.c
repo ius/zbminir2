@@ -120,6 +120,8 @@ static void switch_event_handler(sl_zigbee_af_event_t *event)
 
     status = sl_zigbee_af_send_command_unicast_to_bindings();
     sl_zigbee_app_debug_println("%s: 0x%X", "Send to bindings", status);
+    status = sl_zigbee_af_send_command_multicast_to_bindings();
+    sl_zigbee_app_debug_println("%s: 0x%X", "Send to bindings", status);
   }
 }
 
