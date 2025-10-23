@@ -42,7 +42,7 @@
 #endif // SL_CATALOG_LED0_PRESENT
 
 #define LED_BLINK_PERIOD_MS      2000
-#define LIGHT_ENDPOINT           1
+#define LIGHT_ENDPOINT           3
 #define RESET_TIMEOUT_MS         1000
 #define RESET_NUM_TOGGLES        5
 #define SWITCH_DEBOUNCE_MS       35
@@ -119,6 +119,8 @@ static void switch_event_handler(sl_zigbee_af_event_t *event)
     sl_zigbee_af_set_command_endpoints(LIGHT_ENDPOINT, 0);
 
     status = sl_zigbee_af_send_command_unicast_to_bindings();
+    sl_zigbee_app_debug_println("%s: 0x%X", "Send to bindings", status);
+    status = sl_zigbee_af_send_command_multicast_to_bindings();
     sl_zigbee_app_debug_println("%s: 0x%X", "Send to bindings", status);
   }
 }
