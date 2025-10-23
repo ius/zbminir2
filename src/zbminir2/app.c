@@ -42,7 +42,7 @@
 #endif // SL_CATALOG_LED0_PRESENT
 
 #define LED_BLINK_PERIOD_MS      2000
-#define LIGHT_ENDPOINT           1
+#define LIGHT_ENDPOINT           3
 #define RESET_TIMEOUT_MS         1000
 #define RESET_NUM_TOGGLES        5
 #define SWITCH_DEBOUNCE_MS       35
